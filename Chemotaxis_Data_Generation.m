@@ -1,6 +1,9 @@
 function Chemotaxis_Presentation_Data_Generation
 
-for a = [0.125:0.125:22]
+% Specify alpha values at which to run the code at. To run the base
+% simulation, set 'a = 1'
+for a = [0.125:0.125:2]
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inital Conditions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +98,7 @@ inv_2h = 1 / (2 * h);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Applying initial values to system and final parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 u = u0;
 v = v0;
 dt = h^2 * 0.5; 
@@ -191,7 +195,7 @@ v    = [0;vnp1;0]; % gets the new value calculated for what v is but keeps it wi
 if mod(k,write_to_csv) == 1    
     writematrix(reshape(real(u), [1,N]),filename_u,'WriteMode','append')
     writematrix(reshape(real(v), [1,N+1]),filename_v,'WriteMode','append')
-    %plot(xu,u,xv,v,'LineWidth',2.0), xlabel('x'),legend('u','v'), axis([0 1 -.1 2]),title(['t=',num2str(k*dt),'r=',num2str(coeff1), 'eps =',num2str(ep1)]), pause(0.05)  %plots u,v (notice that now we have the extra two points for u
+    %plot(xu,u,xv,v,'LineWidth',2.0), xlabel('x'),legend('u','v'), axis([0 1 -.1 2]),title(['t=',num2str(k*dt),'r=',num2str(coeff1), 'eps =',num2str(ep1)]), pause(0.05) 
   
 end
 
